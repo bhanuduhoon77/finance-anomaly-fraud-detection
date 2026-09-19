@@ -20,3 +20,12 @@ print("\nNew columns preview:\n", df_filtered[['amount', 'balanceDiffOrig', 'bal
 # Save cleaned data taaki baar baar poora dataset load na karna pade
 df_filtered.to_csv("data/cleaned_transactions.csv", index=False)
 print("\nCleaned data saved!")
+# Load cleaned data
+df = pd.read_csv("data/cleaned_transactions.csv")
+
+# Fraud vs Normal comparison
+print("\n--- FRAUD TRANSACTIONS STATS ---")
+print(df[df['isFraud'] == 1][['amount', 'errorBalanceOrig', 'errorBalanceOrig']].describe())
+
+print("\n--- NORMAL TRANSACTIONS STATS ---")
+print(df[df['isFraud'] == 0][['amount', 'errorBalanceOrig']].describe())
